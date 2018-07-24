@@ -1,0 +1,14 @@
+/pirabelenv
+/pirabel.sock
+/__pycache__
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.cloud-locale-test.skip
+.gitconfig
+.profile
+.ssh/
+.sudo_as_admin_successful
+     
+
