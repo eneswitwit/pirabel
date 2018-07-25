@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/integrate/<fx>")
 def integrate(fx):
     fx = convert_latex(fx);
-    return json.dumps(integration(fx));
+    return json.dumps(integration(fx)[0]);
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
