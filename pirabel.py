@@ -7,6 +7,10 @@ from flask import Flask
 app = Flask(__name__)
 
 # routes
+@app.route("/")
+def home():
+    return json.dumps("Pirabel API 1.0");
+
 @app.route("/integrate/<fx>/<down_boundary>/<upper_boundary>")
 def integrate_route(fx, down_boundary, upper_boundary):
     fx = convert_latex(fx);
