@@ -73,3 +73,12 @@ def convert_latex(fx):
 
 def convert_python(fx):
     return fx.replace("**","^");    
+
+
+# scooya 
+@app.route("/scooya/<email>")
+def scooya_subscribe(email):
+    emails = open('emails.txt','a');
+    emails.write(',' + email);
+    emails.close();
+    return json.dumps('Email written to emails.txt');
