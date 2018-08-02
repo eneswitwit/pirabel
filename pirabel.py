@@ -3,6 +3,8 @@ from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
+import smtplib
+
 
 # flask
 from flask import Flask
@@ -78,7 +80,18 @@ def convert_python(fx):
 # scooya 
 @app.route("/scooya/<email>")
 def scooya_subscribe(email):
+    # write to txt
     emails = open('emails.txt','a');
     emails.write(',' + email);
     emails.close();
+
+    # write email
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login("witwitenes@gmail.com", "390495616Ew")
+
+    msg = " Neuer Subscriber fuer scooya.de: " + email;
+    server.sendmail("witwitenes@gmail.com", "seoptix@googlemail.com", msg);
+    server.quit()
+
     return json.dumps('Email written to emails.txt');
