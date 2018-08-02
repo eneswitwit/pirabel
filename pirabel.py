@@ -86,12 +86,24 @@ def scooya_subscribe(email):
     emails.close();
 
     # write email
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login("witwitenes@gmail.com", "390495616Ew")
 
-    msg = " Neuer Subscriber fuer scooya.de: " + email;
-    server.sendmail("witwitenes@gmail.com", "seoptix@googlemail.com", msg);
-    server.quit()
+    sent_from = 'witwitenes@gmail.com';
+    to = ['seoptix@googlemail.com', 'eneswitwit@live.de'];  
+    subject = 'Scooya: Neuer Subscriber';  
+    body = 'Sehr geehrter Herr Jaworski, \n Es gibt einen Grund zum Feiern. Ich freue mich Ihnen mitteilen zu dürfen, dass sich ein neuer Subscriber für Scooya angemeldet hat. \n Email: ' + email + ' \n Hochachtungsvoll, Ihr Computer';
+
+    email_text = """\  
+        From: %s  
+        To: %s  
+        Subject: %s
+
+        %s
+        """ % (sent_from, ", ".join(to), subject, body);
+
+    server = smtplib.SMTP('smtp.gmail.com', 587);
+    server.starttls();
+    server.login("witwitenes@gmail.com", "390495616Ew");
+    server.sendmail(sent_from, to, email_text);
+    server.quit();
 
     return json.dumps('Email written to emails.txt');
