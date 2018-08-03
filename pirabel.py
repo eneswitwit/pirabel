@@ -1,10 +1,12 @@
+# import necessary packages
 import json
 from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import smtplib
-
 
 # flask
 from flask import Flask
@@ -86,24 +88,29 @@ def scooya_subscribe(email):
     emails.close();
 
     # write email
-
-    sent_from = 'witwitenes@gmail.com';
-    to = ['seoptix@googlemail.com', 'eneswitwit@live.de'];  
-    subject = 'Scooya: Neuer Subscriber';  
-    body = 'Sehr geehrter Herr Jaworski, \n Es gibt einen Grund zum Feiern. Ich freue mich Ihnen mitteilen zu dürfen, dass sich ein neuer Subscriber für Scooya angemeldet hat. \n Email: ' + email + ' \n Hochachtungsvoll, Ihr Computer';
-
-    email_text = """\  
-        From: %s  
-        To: %s  
-        Subject: %s
-
-        %s
-        """ % (sent_from, ", ".join(to), subject, body);
-
-    server = smtplib.SMTP('smtp.gmail.com', 587);
-    server.starttls();
-    server.login("witwitenes@gmail.com", "390495616Ew");
-    server.sendmail(sent_from, to, email_text);
-    server.quit();
+    # create message object instance
+    msg = MIMEMultipart()
+    message = "Sehr geehrter Herr Jaworski, \n es gibt einen Grund zum Feiern. Schmeißen Sie den Grill an und holen Sie das kalte Bier raus. \n Ich freue mich Ihnen mitteilen zu dürfen, dass sich ein neuer Subscriber für Scooya angemeldet hat. \n Email: " + email + " \n Hochachtungsvoll, Ihr Computer"
+ 
+    # setup the parameters of the message
+    password = "390495616Ew"
+    msg['From'] = "witwitenes@gmail.com"
+    msg['To'] = "eneswitwit@live.de"
+    msg['Subject'] = "Scooya Subscription"
+ 
+    # add in the message body
+    msg.attach(MIMEText(message, 'plain'))
+ 
+    #create server
+    server = smtplib.SMTP('smtp.gmail.com: 587')
+    server.starttls()
+ 
+    # Login Credentials for sending the mail
+    server.login(msg['From'], password)
+ 
+    # send the message via the server.
+    server.sendmail(msg['From'], msg['To'], msg.as_string())
+ 
+    server.quit()
 
     return json.dumps('Email written to emails.txt');
