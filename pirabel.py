@@ -4,9 +4,6 @@ from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
 
 # flask
 from flask import Flask
@@ -51,8 +48,6 @@ def differentiate_route(fx):
     ];
     return json.dumps(json_result);
 
-
-
 #integration
 def integration(fx, down_boundary, upper_boundary):
     down_boundary = float(down_boundary);
@@ -68,49 +63,9 @@ def calculation(fx, down_boundary, upper_boundary):
     right = fx.replace("x", down_boundary);
     return left + " - " + right;
 
-#derivative
-
-
 #helper functions 
 def convert_latex(fx):
     return fx.replace("^","**");
 
 def convert_python(fx):
     return fx.replace("**","^");    
-
-
-# scooya 
-@app.route("/scooya/<email>")
-def scooya_subscribe(email):
-    # write to txt
-    emails = open('emails.txt','a');
-    emails.write(',' + email);
-    emails.close();
-
-    # write email
-    # create message object instance
-    msg = MIMEMultipart()
-    message = "Sehr geehrter Herr Jaworski, \n es gibt einen Grund zum Feiern. Schmeißen Sie den Grill an und holen Sie das kalte Bier raus. \n Ich freue mich Ihnen mitteilen zu dürfen, dass sich ein neuer Subscriber für Scooya angemeldet hat. \n Email: " + email + " \n Hochachtungsvoll, Ihr Computer"
- 
-    # setup the parameters of the message
-    password = "390495616Ew"
-    msg['From'] = "witwitenes@gmail.com"
-    msg['To'] = "eneswitwit@live.de"
-    msg['Subject'] = "Scooya Subscription"
- 
-    # add in the message body
-    msg.attach(MIMEText(message, 'plain'))
- 
-    #create server
-    server = smtplib.SMTP('smtp.gmail.com: 587')
-    server.starttls()
- 
-    # Login Credentials for sending the mail
-    server.login(msg['From'], password)
- 
-    # send the message via the server.
-    server.sendmail(msg['From'], msg['To'], msg.as_string())
- 
-    server.quit()
-
-    return json.dumps('Email written to emails.txt');
