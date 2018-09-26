@@ -22,14 +22,14 @@ def home():
 # integration routes
 @app.route("/integrate/<fx>/<down_boundary>/<upper_boundary>")
 def integrate_route(fx, down_boundary, upper_boundary):
-    fx = convert_latex(fx);
+    fx = convert_latex(fx)
     indefinite_result = convert_python(str(indefinite(fx, Symbol('x'))))
     integration_result = integration(fx, down_boundary, upper_boundary)[0]
     json_result = [
         {'indefinite': indefinite_result},
         {'calculation': calculation(indefinite_result, down_boundary, upper_boundary)},
         {'result': integration_result}
-    ];
+    ]
     return json.dumps(json_result)
 
 
@@ -39,7 +39,7 @@ def indefinite_route(fx):
     indefinite_result = convert_python(str(indefinite(fx, Symbol('x'))))
     json_result = [
         {'indefinite': indefinite_result}
-    ];
+    ]
     return json.dumps(json_result)
 
 
@@ -47,7 +47,7 @@ def indefinite_route(fx):
 @app.route("/differentiate/<fx>")
 def differentiate_route(fx):
     fx = convert_latex(fx)
-    differentation_result = convert_python(str(diff(fx, Symbol('x'))));
+    differentation_result = convert_python(str(diff(fx, Symbol('x'))))
     json_result = [
         {'derivative': differentation_result}
     ]
@@ -59,7 +59,7 @@ def integration(fx, down_boundary, upper_boundary):
     down_boundary = float(down_boundary)
     upper_boundary = float(upper_boundary)
     area = quad(integrand(fx), down_boundary, upper_boundary)
-    return area;
+    return area
 
 
 def integrand(fx):
@@ -70,6 +70,18 @@ def calculation(fx, down_boundary, upper_boundary):
     left = fx.replace("x", upper_boundary)
     right = fx.replace("x", down_boundary)
     return left + " - " + right
+
+
+# circle
+@app.route("/circle/<input_value>")
+def circle_route(input_value):
+    equal_sign_index = input_value.find('=')
+    value_type = input[:equal_sign_index]
+
+    json_result = [
+        {'debug': value_type}
+    ]
+    return json.dumps(json_result)
 
 
 # helper functions
