@@ -76,7 +76,7 @@ def calculation(fx, down_boundary, upper_boundary):
 @app.route("/circle/<input_value>")
 def circle_route(input_value):
     equal_sign_index = input_value.find('=')
-    value_type = input[:equal_sign_index]
+    value_type = input_value[:equal_sign_index]
 
     json_result = [
         {'debug': value_type}
@@ -86,8 +86,14 @@ def circle_route(input_value):
 
 # helper functions
 def convert_latex(fx):
-    return fx.replace("^", "**")
+    fx = fx.replace("{", "(")
+    fx = fx.replace("}", ")")
+    fx = fx.replace("^", "**")
+    return fx
 
 
 def convert_python(fx):
-    return fx.replace("**", "^")
+    fx = fx.replace("(", "{")
+    fx = fx.replace(")", "}")
+    fx = fx.replace("**", "^")
+    return fx
