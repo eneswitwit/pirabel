@@ -88,7 +88,7 @@ def circle_route(input_value):
 @app.route("/convert-number-systems/<number_system_input>/<number_system_output>/<value>")
 def convert_number_systems(number_system_input, number_system_output, value):
 
-    result = int(value, number_system_input)
+    result = int(value, int(number_system_input))
 
     json_result = [
         {'result': result}
