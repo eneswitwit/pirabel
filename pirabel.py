@@ -4,6 +4,7 @@ from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
+from sympy import latex
 
 # flask
 from flask import Flask
@@ -47,7 +48,7 @@ def indefinite_route(fx):
 @app.route("/differentiate/<fx>")
 def differentiate_route(fx):
     fx = convert_latex(fx)
-    differentation_result = convert_python(str(diff(fx, Symbol('x'))))
+    differentation_result = latex(convert_python(str(diff(fx, Symbol('x')))), mode='plain')
     json_result = [
         {'derivative': differentation_result}
     ]
