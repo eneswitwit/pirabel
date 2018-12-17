@@ -88,13 +88,24 @@ def circle_route(input_value):
 @app.route("/convert-number-systems/<number_system_input>/<number_system_output>/<value>")
 def convert_number_systems(number_system_input, number_system_output, value):
 
-    result = int(value, int(number_system_input))
+    decimal = int(value, int(number_system_input))
+    result = convert_decimal_to_base_system(decimal, int(number_system_output))
 
     json_result = [
         {'result': result}
     ]
 
     return json.dumps(json_result)
+
+
+def convert_decimal_to_base_system (n, base_system):
+    if n == 0:
+        return '0'
+    nums = []
+    while n:
+        n, r = divmod(n, int(base_system))
+        nums.append(str(r))
+    return ''.join(reversed(nums))
 
 # helper functions
 def convert_latex(fx):
