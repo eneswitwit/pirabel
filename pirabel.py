@@ -48,7 +48,7 @@ def indefinite_route(fx):
 @app.route("/differentiate/<fx>")
 def differentiate_route(fx):
     fx = convert_latex(fx)
-    differentation_result = latex(convert_python(str(diff(fx, Symbol('x')))), mode='plain')
+    differentation_result = convert_python(str(diff(fx, Symbol('x'))))
     json_result = [
         {'derivative': differentation_result}
     ]
@@ -84,6 +84,17 @@ def circle_route(input_value):
     ]
     return json.dumps(json_result)
 
+# convert number systems
+@app.route("/convert-number-systems/<number_system_input>/<number_system_output>/<value>")
+def convert_number_systems(number_system_input, number_system_output, value):
+
+    result = int(value, number_system_input)
+
+    json_result = [
+        {'result': result}
+    ]
+
+    return json.dumps(json_result)
 
 # helper functions
 def convert_latex(fx):
