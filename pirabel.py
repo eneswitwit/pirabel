@@ -1,6 +1,6 @@
 # import necessary packages
-import json
 import string
+import json
 from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
@@ -105,7 +105,7 @@ def convert_decimal_to_base_system (n, base_system):
     nums = []
     while n:
         n, r = divmod(n, int(base_system))
-        if(r >= 10)
+        if r >= 10:
             r = convert_base_to_letter(r)
         nums.append(str(r))
     return ''.join(reversed(nums))
