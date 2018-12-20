@@ -121,6 +121,11 @@ def pos_to_char(pos):
 @app.route("/rule-of-proportion/<value_1>/<value_2>/<value_3>/<value_4>")
 def rule_of_proportionn(value_1, value_2, value_3, value_4):
 
+    value_1=  float(value_1)
+    value_2 = float(value_2)
+    value_3 = float(value_3)
+    value_4 = float(value_4)
+    
     equal_zero = 0
     if value_1 == 0:
         equal_zero += 1 
@@ -134,10 +139,6 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
     if equal_zero != 1:
         return json.dumps({'error' : 'We need exactly 3 values inequal 0. We have now ' + str(equal_zero)})
         
-    value_1=  float(value_1)
-    value_2 = float(value_2)
-    value_3 = float(value_3)
-    value_4 = float(value_4)
 
     if value_1 == 0 or value_2 == 0:
         # compute proportion of value 3 and 4
