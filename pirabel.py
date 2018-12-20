@@ -1,5 +1,6 @@
 # import necessary packages
 import json
+import string
 from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
@@ -104,8 +105,17 @@ def convert_decimal_to_base_system (n, base_system):
     nums = []
     while n:
         n, r = divmod(n, int(base_system))
+        if(r >= 10)
+            r = convert_base_to_letter(r)
         nums.append(str(r))
     return ''.join(reversed(nums))
+
+def convert_base_to_letter (num):
+    return pos_to_char(num-10).upper()
+
+
+def pos_to_char(pos):
+    return chr(pos + 97)
 
 # helper functions
 def convert_latex(fx):
