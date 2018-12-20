@@ -132,7 +132,7 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
         equal_zero += 1
 
     if equal_zero != 1:
-        return json.dumps({'error' : 'We need exactly 3 values inequal 0'})
+        return json.dumps({'error' : 'We need exactly 3 values inequal 0. We have now ' + str(equal_zero)})
         
     value_1=  float(value_1)
     value_2 = float(value_2)
