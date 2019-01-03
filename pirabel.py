@@ -6,6 +6,7 @@ from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
 from sympy import latex
+from fractions import Fraction
 
 # flask
 from flask import Flask
@@ -173,14 +174,30 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
     return json.dumps(json_result)
 
 # fraction
-@app.route("/fraction/<equation>")
+@app.route("/fraction/<firstCounter>/<firstDenominator>/<operator>/<secondCounter>/<secondDenominator>")
 def fraction(equation):
 
-    result = eval(equation).as_integer_ratio()
+    firstCounter = eval(firstCounter)
+    secondCounter = eval(secondCounter)
+
+    firstFraction = Fraction(firstCounter, firstDenominator)
+    secondFraction = Fraction(seconndCounter, secondDenominator)
+
+    if operator == '+':
+        result = firstFraction + secondFraction
+
+    if operator == '-':
+        result = firstFraction - secondFraction
+
+    if operator == '*':
+        result = firstFraction * secondFraction
+
+    if operator == ':':
+        result = firstFraction / secondFraction
 
     json_result = [
-        {'resultCounter': result[0]},
-        {'resultDenominator': result[1]},
+        {'resultCounter': result.numerator},
+        {'resultDenominator': result.denominator},
     ]
 
     return json.dumps(json_result)
