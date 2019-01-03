@@ -174,11 +174,9 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
     return json.dumps(json_result)
 
 # fraction
-@app.route("/fraction/<firstCounter>/<firstDenominator>/<operator>/<secondCounter>/<secondDenominator>")
-def fraction(firstCounter, firstDenominator, operator, secondCounter, secondDenominator):
+@app.route("/fraction/<firstFactor>/<firstCounter>/<firstDenominator>/<operator>/<secondFactor>/<secondCounter>/<secondDenominator>")
+def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor, secondCounter, secondDenominator):
 
-    firstCounter = eval(firstCounter)
-    secondCounter = eval(secondCounter)
 
     firstFraction = Fraction(float(firstCounter), float(firstDenominator))
     secondFraction = Fraction(float(seconndCounter), float(secondDenominator))
