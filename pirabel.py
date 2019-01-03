@@ -175,7 +175,7 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
 
 # fraction
 @app.route("/fraction/<firstCounter>/<firstDenominator>/<operator>/<secondCounter>/<secondDenominator>")
-def fraction(equation):
+def fraction(firstCounter, firstDenominator, operator, secondCounter, secondDenominator):
 
     firstCounter = eval(firstCounter)
     secondCounter = eval(secondCounter)
