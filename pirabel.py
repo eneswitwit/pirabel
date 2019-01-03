@@ -180,8 +180,8 @@ def fraction(firstCounter, firstDenominator, operator, secondCounter, secondDeno
     firstCounter = eval(firstCounter)
     secondCounter = eval(secondCounter)
 
-    firstFraction = Fraction(firstCounter, firstDenominator)
-    secondFraction = Fraction(seconndCounter, secondDenominator)
+    firstFraction = Fraction(float(firstCounter), float(firstDenominator))
+    secondFraction = Fraction(float(seconndCounter), float(secondDenominator))
 
     if operator == '+':
         result = firstFraction + secondFraction
