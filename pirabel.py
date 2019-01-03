@@ -172,6 +172,16 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
 
     return json.dumps(json_result)
 
+# fraction
+@app.route("/fraction/<equation>")
+def fraction(equation):
+
+    json_result = [
+        {'result': equation}
+    ]
+
+    return json.dumps(json_result)
+
 # helper functions
 def convert_latex(fx):
     fx = fx.replace("{", "(")
