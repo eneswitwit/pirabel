@@ -176,10 +176,11 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
 @app.route("/fraction/<equation>")
 def fraction(equation):
 
-    equation = eval(equation)
+    result = eval(equation).as_integer_ratio()
 
     json_result = [
-        {'result': equation}
+        {'resultCounter': result[0]},
+        {'resultDenominator': result[1]},
     ]
 
     return json.dumps(json_result)
