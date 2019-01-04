@@ -227,6 +227,5 @@ def convert_python(fx):
 # automatic deployment
 @app.route("/deployment/pull")
 def deploy():
-    process = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE)
-    output = process.communicate()[0]
+    output = subprocess.check_output(["git", "pull"])
     return 0
