@@ -232,14 +232,10 @@ def convert_python(fx):
 # automatic deployment
 @app.route("/deployment/pull", methods=['POST'])
 def deploy():
-
     subprocess.call("/usr/bin/git pull", shell=True)
     return json.dumps('Deployed succesfully')
 
 
-@app.route("/test")
-def test():
-    return json.dumps('Test route works fine')
 
 
 
