@@ -7,6 +7,7 @@ from sympy import diff
 from sympy import Symbol
 from sympy import latex
 from fractions import Fraction
+from decimal import Decimal
 
 # flask
 from flask import Flask
@@ -174,12 +175,12 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
     return json.dumps(json_result)
 
 # fraction
-@app.route("/fraction/<firstFactor>/<firstCounter>/<firstDenominator>/<operator>/<secondFactor>/<secondCounter>/<secondDenominator>")
+@app.route("/fraction/<firstFactor>/<firstCounter>/<firstDenominator>/<operator>/<secondFactor>/<secondCounter>/<secondsDenominator>")
 def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor, secondCounter, secondDenominator):
 
 
-    firstFraction = Fraction(float(firstCounter), float(firstDenominator))
-    secondFraction = Fraction(float(seconndCounter), float(secondDenominator))
+    firstFraction = Fraction(Decimal(firstCounter), Decimal(firstDenominator))
+    secondFraction = Fraction(Decimal(seconndCounter), Decimal(secondDenominator))
 
     if operator == '+':
         result = firstFraction + secondFraction
