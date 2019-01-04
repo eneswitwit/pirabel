@@ -8,6 +8,7 @@ from sympy import Symbol
 from sympy import latex
 from fractions import Fraction
 from decimal import Decimal
+import subprocess
 
 # flask
 from flask import Flask
@@ -221,3 +222,11 @@ def convert_python(fx):
     fx = fx.replace(")", "}")
     fx = fx.replace("**", "^")
     return fx
+
+
+# automatic deployment
+@app.route("/deployment/pull")
+def deploy():
+    process = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+    return 0
