@@ -228,7 +228,7 @@ def convert_python(fx):
 # automatic deployment
 @app.route("/deployment/pull", methods=['POST'])
 def deploy():
-    subprocess.call("cd ~/home/pirabel & git pull", shell=True)
+    subprocess.call("cd /home/pirabel & git pull", shell=True)
     return json.dumps('Deployed succesfully')
 
 
