@@ -228,4 +228,4 @@ def convert_python(fx):
 @app.route("/deployment/pull")
 def deploy():
     output = subprocess.call("cd /home/pirabel & git pull", shell=True)
-    return 0
+    return json.dumps(0)
