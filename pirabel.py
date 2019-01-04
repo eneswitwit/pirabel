@@ -231,5 +231,10 @@ def deploy():
     subprocess.call("cd ~/home/pirabel & git pull", shell=True)
     return None
 
+    
+@app.route("/test")
+def test():
+    return json.dumps('Test route works fine')
+
 
 
