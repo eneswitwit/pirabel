@@ -179,24 +179,27 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
 def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor, secondCounter, secondDenominator):
 
 
-    firstFraction = Fraction(Decimal(firstCounter), Decimal(firstDenominator))
-    secondFraction = Fraction(Decimal(secondCounter), Decimal(secondDenominator))
+    fractionOne = Fraction(1)
+    firstFractionCounter = Fraction(Decimal(firstCounter))
+    firstFractionDenominatort = fractionOne/Fraction(Decimal(firstDenominator))
+    firstFraction = firstFractionCounter * firstFractionDenominatort
+    #secondFraction = Fraction(Decimal(secondCounter), Decimal(secondDenominator))
 
     if operator == '+':
-        result = firstFraction + secondFraction
+        #result = firstFraction + secondFraction
 
     if operator == '-':
-        result = firstFraction - secondFraction
+        #result = firstFraction - secondFraction
 
     if operator == '*':
-        result = firstFraction * secondFraction
+        #result = firstFraction * secondFraction
 
     if operator == ':':
-        result = firstFraction / secondFraction
+        #result = firstFraction / secondFraction
 
     json_result = [
-        {'resultCounter': result.numerator},
-        {'resultDenominator': result.denominator},
+        {'resultCounter': firstFraction.numerator},
+        {'resultDenominator': firstFraction.denominator},
     ]
 
     return json.dumps(json_result)
