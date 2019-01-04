@@ -10,6 +10,10 @@ from fractions import Fraction
 from decimal import Decimal
 import subprocess
 
+# auto deploy
+from subprocess import Popen, PIPE
+from os import path
+
 # flask
 from flask import Flask
 from flask import request
@@ -228,13 +232,12 @@ def convert_python(fx):
 # automatic deployment
 @app.route("/deployment/pull", methods=['POST'])
 def deploy():
-    subprocess.call("git pull", shell=True)
+
+    subprocess.call("/usr/bin/git pull", shell=True)
     return json.dumps('Deployed succesfully')
 
 
-@app.route("/test")
-def test():
-    return json.dumps('Test route works fine')
+
 
 
 
