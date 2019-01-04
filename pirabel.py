@@ -237,7 +237,9 @@ def deploy():
     return json.dumps('Deployed succesfully')
 
 
-
+@app.route("/test")
+def test():
+    return json.dumps('Test route works fine')
 
 
 
