@@ -185,9 +185,25 @@ def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor
     firstFraction = firstFractionCounter * firstFractionDenominator
 
 
+    secondFractionCounter = Fraction(Decimal(secondCounter))
+    secondFractionDenominator = fractionOne/Fraction(Decimal(secondDenominator))
+    secondFraction = secondFractionCounter * secondFractionDenominator
+
+    if operator == '+':
+        result = firstFraction + secondFraction
+
+    if operator == '-':
+        result = firstFraction - secondFraction
+
+    if operator == '*':
+        result = firstFraction * secondFraction
+
+    if operator == ':':
+        result = firstFraction / secondFraction
+
     json_result = [
-        {'resultCounter': firstFraction.numerator},
-        {'resultDenominator': firstFraction.denominator},
+        {'resultCounter': result.numerator},
+        {'resultDenominator': result.denominator},
     ]
 
     return json.dumps(json_result)
