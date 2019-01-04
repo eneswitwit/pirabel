@@ -229,3 +229,7 @@ def convert_python(fx):
 def deploy():
     output = subprocess.call("cd /home/pirabel & git pull", shell=True)
     return json.dumps(0)
+
+@app.route("/test", methods=['GET', 'POST'])
+def test():
+    return json.dumps('Test route works fine')
