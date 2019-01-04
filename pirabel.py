@@ -226,12 +226,10 @@ def convert_python(fx):
 
 
 # automatic deployment
-@app.route("/deployment/pull", methods=['GET', 'POST'])
+@app.route("/deployment/pull", methods=['POST'])
 def deploy():
-    if request.method == 'POST':
-        gitPull()
+    subprocess.call("cd ~/home/pirabel & git pull", shell=True)
+    return None
 
-def gitPull():
-    output = subprocess.call("cd ~/home/pirabel & git pull", shell=True)
 
 
