@@ -175,12 +175,12 @@ def rule_of_proportionn(value_1, value_2, value_3, value_4):
     return json.dumps(json_result)
 
 # fraction
-@app.route("/fraction/<firstFactor>/<firstCounter>/<firstDenominator>/<operator>/<secondFactor>/<secondCounter>/<secondsDenominator>")
+@app.route("/fraction/<firstFactor>/<firstCounter>/<firstDenominator>/<operator>/<secondFactor>/<secondCounter>/<secondDenominator>")
 def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor, secondCounter, secondDenominator):
 
 
     firstFraction = Fraction(Decimal(firstCounter), Decimal(firstDenominator))
-    secondFraction = Fraction(Decimal(seconndCounter), Decimal(secondDenominator))
+    secondFraction = Fraction(Decimal(secondCounter), Decimal(secondDenominator))
 
     if operator == '+':
         result = firstFraction + secondFraction
