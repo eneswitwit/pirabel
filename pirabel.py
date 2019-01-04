@@ -180,12 +180,12 @@ def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor
 
 
     fractionOne = Fraction(1)
-    firstFractionCounter = Fraction(Decimal(float(firstFactor)*float(firstCounter)))
+    firstFractionCounter = Fraction(Decimal(firstFactor)*Decimal(firstCounter))
     firstFractionDenominator = fractionOne/Fraction(Decimal(firstDenominator))
     firstFraction = firstFractionCounter * firstFractionDenominator
 
 
-    secondFractionCounter = Fraction(Decimal(float(secondFactor)*float(secondCounter)))
+    secondFractionCounter = Fraction(Decimal(secondFactor)*Decimal(secondCounter))
     secondFractionDenominator = fractionOne/Fraction(Decimal(secondDenominator))
     secondFraction = secondFractionCounter * secondFractionDenominator
 
