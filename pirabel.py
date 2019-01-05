@@ -239,7 +239,11 @@ def convert_exponents(fx):
 
         newFxSpace = newFx.find(' ')
         exponent = newFx[:newFxSpace+1]
-        exponentNew = exponent.replace(' ', '}')
+
+        if exponent.find(' ') != -1:
+            exponentNew = exponent.replace(' ', '}')
+        else:
+            exponentNew += '}'
 
         # set in the } correctly
         fx = fx.replace(exponent, exponentNew)
