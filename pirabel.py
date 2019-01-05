@@ -236,7 +236,7 @@ def convert_exponents(fx):
     while index != -1:
 
         # divide in substring 
-        newFx = fx[index:]
+        newFx = fx[index+1:]
 
         newFxSpace = newFx.find(' ')
 
