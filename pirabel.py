@@ -225,7 +225,14 @@ def convert_latex(fx):
 
 def convert_python(fx):
     fx = fx.replace("**", "^")
+    fx = convert_exponents(fx)
     return fx
+
+def convert_exponents(fx):
+    fx = fx.replace('^', '^{')
+    fx = fx.replace(' ', '}')
+    return fx
+
 
 
 # automatic deployment
