@@ -229,6 +229,7 @@ def convert_python(fx):
     return fx
 
 def convert_exponents(fx):
+
     fx = fx.replace('^', '^{')
     index = fx.find('^{')
 
@@ -249,7 +250,7 @@ def convert_exponents(fx):
         fx = fx.replace(exponent, exponentNew)
 
         # set new index 
-        index = newFx.find('^{')
+        #index = newFx.find('^{')
 
     return fx
 
