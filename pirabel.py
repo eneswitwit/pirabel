@@ -233,7 +233,7 @@ def convert_exponents(fx):
     fx = fx.replace('^', '^{')
     index = fx.find('^{')
 
-    if index != -1:
+    while index != -1:
 
         # divide in substring 
         newFx = fx[index:]
@@ -243,14 +243,15 @@ def convert_exponents(fx):
         if newFxSpace != -1:
             exponent = newFx[:newFxSpace]
             exponentNew = exponent + '}'
+            # set in the } correctly
             fx = fx.replace(exponent, exponentNew)
         else:
+            # set in the } correctly
             fx = fx + '}'
 
-        # set in the } correctly
 
         # set new index 
-        # ndex = newFx.find('^{')
+        index = newFx.find('^{')
 
     return fx
 
