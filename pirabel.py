@@ -236,7 +236,7 @@ def convert_exponents(fx):
         newFxSpace = newFx.find(' ')
         exponent = newFx[:newFxSpace+1]
         exponentNew = exponent.replace(' ', '}')
-        fx.replace(exponent, exponentNew)
+        fx = exponent
 
     return fx
 
