@@ -219,6 +219,7 @@ def convert_latex(fx):
     fx = fx.replace("{", "(")
     fx = fx.replace("}", ")")
     fx = fx.replace("^", "**")
+    fx = fx.replace(":", "/")
     return fx
 
 
