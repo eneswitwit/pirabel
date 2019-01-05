@@ -231,12 +231,21 @@ def convert_python(fx):
 def convert_exponents(fx):
     fx = fx.replace('^', '^{')
     index = fx.find('^{')
-    if index != -1:
-        newFx = fx[index:]
+
+    while index != -1:
+
+        # divide in substring 
+        newFx = fx[index+1:]
+
         newFxSpace = newFx.find(' ')
         exponent = newFx[:newFxSpace+1]
         exponentNew = exponent.replace(' ', '}')
+
+        # set in the } correctly
         fx = fx.replace(exponent, exponentNew)
+
+        # set new index 
+        index = newFx.find('^{')
 
     return fx
 
