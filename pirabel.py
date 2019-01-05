@@ -232,10 +232,10 @@ def convert_exponents(fx):
     fx = fx.replace('^', '^{')
     index = fx.find('^{')
 
-    while index != -1:
+    if index != -1:
 
         # divide in substring 
-        newFx = fx[index+1:]
+        newFx = fx[index:]
 
         newFxSpace = newFx.find(' ')
         exponent = newFx[:newFxSpace+1]
