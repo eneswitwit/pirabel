@@ -239,18 +239,18 @@ def convert_exponents(fx):
         newFx = fx[index:]
 
         newFxSpace = newFx.find(' ')
-        exponent = newFx[:newFxSpace+1]
 
-        if exponent.find(' ') != -1:
+        if newFxSpace != -1:
+            exponent = newFx[:newFxSpace+1]
             exponentNew = exponent.replace(' ', '}')
         else:
-            exponentNew += '}'
+            exponentNew = exponent + '}'
 
         # set in the } correctly
         fx = fx.replace(exponent, exponentNew)
 
         # set new index 
-        #index = newFx.find('^{')
+        # ndex = newFx.find('^{')
 
     return fx
 
