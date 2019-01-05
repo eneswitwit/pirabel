@@ -224,8 +224,6 @@ def convert_latex(fx):
 
 
 def convert_python(fx):
-    fx = fx.replace("(", "{")
-    fx = fx.replace(")", "}")
     fx = fx.replace("**", "^")
     return fx
 
