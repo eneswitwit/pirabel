@@ -230,7 +230,14 @@ def convert_python(fx):
 
 def convert_exponents(fx):
     fx = fx.replace('^', '^{')
-    fx = fx.replace(' ', '}')
+    index = fx.find('^{')
+    if index != -1:
+        newFx = fx[index:]
+        newFxSpace = newFx.find(' ')
+        exponent = newFx[:newFxSpace+1]
+        exponentNew = exponent.replace(' ', '}')
+        fx.replace(exponent, exponentNew)
+
     return fx
 
 
