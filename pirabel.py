@@ -9,6 +9,7 @@ from sympy import latex
 from fractions import Fraction
 from decimal import Decimal
 import subprocess
+from collections import OrderedDict
 
 # auto deploy
 from subprocess import Popen, PIPE
@@ -219,30 +220,34 @@ def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor
 def convertToRomam(num):
 
     num = int(num)
-    val = [
-        1000, 900, 500, 400,
-        100, 90, 50, 40,
-        10, 9, 5, 4,
-        1
-    ]
+    roman = OrderedDict()
+    roman[1000] = "M"
+    roman[900] = "CM"
+    roman[500] = "D"
+    roman[400] = "CD"
+    roman[100] = "C"
+    roman[90] = "XC"
+    roman[50] = "L"
+    roman[40] = "XL"
+    roman[10] = "X"
+    roman[9] = "IX"
+    roman[5] = "V"
+    roman[4] = "IV"
+    roman[1] = "I"
 
-    syb = [
-        "M", "CM", "D", "CD",
-        "C", "XC", "L", "XL",
-        "X", "IX", "V", "IV",
-        "I"
-    ]
+    def roman_num(num):
+        for r in roman.keys():
+            x, y = divmod(num, r)
+            yield roman[r] * x
+            num -= (r * x)
+            if num > 0:
+                roman_num(num)
+            else:
+                break
 
-    roman_num = ''
-    i = 0
+    romanString = "".join([a for a in roman_num(num)])
 
-    while  num > 0:
-        for _ in range(num // val[i]):
-            roman_num += syb[i]
-            num -= val[i]
-            i += 1
-
-    return json.dumps(roman_num)
+    return json.dumps(romanString)
 
 
 
