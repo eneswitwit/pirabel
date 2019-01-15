@@ -217,6 +217,7 @@ def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor
 # convert int to roman numbers
 @app.route("/roman/<num>")
 def convertToRomam(num):
+    num = int(num)
     val = [
         1000, 900, 500, 400,
         100, 90, 50, 40,
