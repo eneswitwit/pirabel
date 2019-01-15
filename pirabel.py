@@ -217,6 +217,7 @@ def fraction(firstFactor, firstCounter, firstDenominator, operator, secondFactor
 # convert int to roman numbers
 @app.route("/roman/<num>")
 def convertToRomam(num):
+
     num = int(num)
     val = [
         1000, 900, 500, 400,
@@ -224,20 +225,24 @@ def convertToRomam(num):
         10, 9, 5, 4,
         1
     ]
+
     syb = [
         "M", "CM", "D", "CD",
         "C", "XC", "L", "XL",
         "X", "IX", "V", "IV",
         "I"
     ]
+
     roman_num = ''
     i = 0
+
     while  num > 0:
         for _ in range(num // val[i]):
             roman_num += syb[i]
             num -= val[i]
             i += 1
-    return roman_num
+
+    return json.dumps(roman_num)
 
 
 
