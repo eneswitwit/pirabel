@@ -259,7 +259,7 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
                                 'X': 10, 'V': 5, 'I': 1}):
     numbers = []
     for char in roman:
-        numbers.append(values[char]) 
+        numbers.append(values[char.upper()]) 
     total = 0
     for num1, num2 in zip(numbers, numbers[1:]):
         if num1 >= num2:
