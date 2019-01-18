@@ -251,7 +251,7 @@ def convertArabicToRomam(num):
 
 @app.route("/arabic/<roman>")
 def convertToRomanToArabic(roman):
-    number = romanToInt(roman)
+    number = get_int_from_roman_numeral_string(roman)
     return json.dumps(number)
 
 
@@ -270,6 +270,11 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
             else:
                 total -= num1
     return total + num2
+
+
+def get_int_from_roman_numeral_string(r):
+    x = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    return sum([x[i] if x[i] >= x[j] else -x[i] for i, j in zip(r, r[1:])]) + x[j]
 
 
 # helper functions
