@@ -249,7 +249,7 @@ def convertArabicToRomam(num):
 
     return json.dumps(romanString)
 
-@app.route("/roman/<roman>")
+@app.route("/arabic/<roman>")
 def convertToRomanToArabic(roman):
     number = int(romanToInt(roman))
     return json.dumps(number)
