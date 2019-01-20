@@ -1,14 +1,17 @@
 # import necessary packages
 import string
 import json
+import subprocess
+
 from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
 from sympy import Symbol
 from sympy import latex
+from sympy.solvers import solve
+
 from fractions import Fraction
 from decimal import Decimal
-import subprocess
 from collections import OrderedDict
 
 # auto deploy
@@ -274,13 +277,21 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
                 total += num1
             else:
                 total -= num1
-                
+
     return total + num2
 
 
-def get_int_from_roman_numeral_string(r):
-    x = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-    return sum([x[i] if x[i] >= x[j] else -x[i] for i, j in zip(r, r[1:])]) + x[j]
+
+# compute zeros
+@app.route("/compute-zero/<fx>")
+def computeZero(fx):
+    fx = convert_latex(fx)
+    result = convert_python(str(solve(fx, Symbol('x'))))
+    json_result = [
+        {'zero': result}
+    ]
+    return json.dumps(json_result)
+
 
 
 # helper functions
