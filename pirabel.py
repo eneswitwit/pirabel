@@ -287,7 +287,11 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
 def computeZero(fx):
     fx = convert_latex(fx)
     result = solve(fx, Symbol('x'))
-    return json.dumps(result)
+    json_result = [
+        {'zero': result}
+    ]
+    return json.dumps(json_result)
+
 
 
 # helper functions
