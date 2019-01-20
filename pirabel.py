@@ -286,12 +286,8 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
 @app.route("/compute-zero/<fx>")
 def computeZero(fx):
     fx = convert_latex(fx)
-    result = convert_python(str(solve(fx, Symbol('x'))))
-    json_result = [
-        {'zero': result}
-    ]
-    return json.dumps(json_result)
-
+    result = solve(fx, Symbol('x'))
+    return json.dumps(result)
 
 
 # helper functions
