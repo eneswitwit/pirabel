@@ -287,10 +287,13 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
 def computeZero(fx):
     fx = convert_latex(fx)
     result = solve(fx, Symbol('x'))
-    json_result = [str(t) for t in result]
+    json_result = [removeI(str(t)) for t in result]
     return json.dumps(json_result)
 
 
+def removeI(sol):
+    index = sol.find('*I')
+    return sol[:index]
 
 # helper functions
 def convert_latex(fx):
