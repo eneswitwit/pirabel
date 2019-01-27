@@ -293,7 +293,10 @@ def computeZero(fx):
 
 def removeI(sol):
     index = sol.find('*I')
-    return sol[:index]
+    if index != -1:
+        return sol[:index]
+    else:
+        return sol
 
 # helper functions
 def convert_latex(fx):
