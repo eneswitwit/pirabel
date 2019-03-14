@@ -64,7 +64,7 @@ def indefinite_route(fx):
 @app.route("/differentiate/<fx>")
 def differentiate_route(fx):
     fx = convert_latex(fx)
-    differentation_result = convert_python(str(diff(fx, Symbol('x'))))
+    differentation_result = latex(sympify(str(diff(fx, Symbol('x')))))
     json_result = [
         {'derivative': differentation_result}
     ]
