@@ -82,11 +82,11 @@ def integrand(fx):
 
 
 def calculation(fx, down_boundary, upper_boundary):
-    #left = sympify(fx)
-    left = fx.subs(Symbol('x'), upper_boundary)
-    #right = sympify(fx)
-    right = fx.subs(Symbol('x'), down_boundary)
-    return str(left) + " - " + str(right)
+    left = sympify(fx)
+    left = left.subs(Symbol('x'), upper_boundary)
+    right = sympify(fx)
+    right = right.subs(Symbol('x'), down_boundary)
+    return latex(sympify(str(left) + " - " + str(right)))
 
 
 # circle
