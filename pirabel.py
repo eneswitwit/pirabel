@@ -41,11 +41,11 @@ def home():
 def integrate_route(fx, down_boundary, upper_boundary):
     fx = convert_latex(fx)
     indefinite_result = indefinite(fx, Symbol('x'))
-    integration_result = latex(sympify(str(integration(fx, down_boundary, upper_boundary)[0])))
+    integration_result = latex(sympify(str(round(integration(fx, down_boundary, upper_boundary)[0],6))))
     json_result = [
         {'indefinite': latex(sympify(str(indefinite_result)))},
         {'calculation': calculation(indefinite_result, down_boundary, upper_boundary)},
-        {'result': round(integration_result,6)}
+        {'result': integration_result}
     ]
     return json.dumps(json_result)
 
