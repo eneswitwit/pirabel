@@ -9,6 +9,7 @@ from sympy import diff
 from sympy import Symbol
 from sympy import latex
 from sympy.solvers import solve
+from sympy import sympify
 
 from fractions import Fraction
 from decimal import Decimal
@@ -287,7 +288,7 @@ def romanToInt(roman, values={'M': 1000, 'D': 500, 'C': 100, 'L': 50,
 def computeZero(fx):
     fx = convert_latex(fx)
     result = solve(fx, Symbol('x'))
-    json_result = [removeI(str(t)) for t in result]
+    json_result = [latex(sympify(removeI(str(t)))) for t in result]
     return json.dumps(json_result)
 
 
