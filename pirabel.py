@@ -10,6 +10,7 @@ from sympy import Symbol
 from sympy import latex
 from sympy.solvers import solve
 from sympy import sympify
+from sympy import exp
 
 from fractions import Fraction
 from decimal import Decimal
