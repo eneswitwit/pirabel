@@ -38,10 +38,10 @@ def home():
 @app.route("/integrate/<fx>/<down_boundary>/<upper_boundary>")
 def integrate_route(fx, down_boundary, upper_boundary):
     fx = convert_latex(fx)
-    indefinite_result = latex(sympify(str(indefinite(fx, Symbol('x')))))
+    indefinite_result = indefinite(fx, Symbol('x'))
     integration_result = latex(sympify(str(integration(fx, down_boundary, upper_boundary)[0])))
     json_result = [
-        {'indefinite': indefinite_result},
+        {'indefinite': latex(sympify(str(indefinite_result)))},
         {'calculation': calculation(indefinite_result, down_boundary, upper_boundary)},
         {'result': integration_result}
     ]
