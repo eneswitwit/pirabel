@@ -83,9 +83,9 @@ def integrand(fx):
 
 def calculation(fx, down_boundary, upper_boundary):
     #left = sympify(fx)
-    left = fx.subs(x, float(upper_boundary))
+    left = fx.subs(lambda x, float(upper_boundary))
     #right = sympify(fx)
-    right = fx.subs(x, float(down_boundary))
+    right = fx.subs(lambda x, float(down_boundary))
     return str(left) + " - " + str(right)
 
 
