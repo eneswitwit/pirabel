@@ -11,7 +11,7 @@ from sympy import Symbol
 from sympy import latex
 from sympy.solvers import solve
 from sympy import sympify
-from sympy import exp, log, ln, sin, cos, tan, arccos, arcsin, arctan, pi
+from sympy import exp, log, ln, sin, cos, tan, pi
 
 from fractions import Fraction
 from decimal import Decimal
