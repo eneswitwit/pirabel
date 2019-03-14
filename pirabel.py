@@ -82,8 +82,8 @@ def integrand(fx):
 
 
 def calculation(fx, down_boundary, upper_boundary):
-    left = fx.replace("x", "*" + upper_boundary)
-    right = fx.replace("x", "*" + down_boundary)
+    left = fx.replace("x", " * " + upper_boundary)
+    right = fx.replace("x", " * " + down_boundary)
     return left + " - " + right
 
 
