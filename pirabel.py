@@ -27,7 +27,6 @@ app = Flask(__name__)
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
 
-x, y, z = symbols("x y z")
 
 # routes
 @app.route("/")
@@ -84,9 +83,9 @@ def integrand(fx):
 
 def calculation(fx, down_boundary, upper_boundary):
     #left = sympify(fx)
-    left = fx.subs(x, upper_boundary)
+    left = fx.subs(Symbol('x'), upper_boundary)
     #right = sympify(fx)
-    right = fx.subs(x, down_boundary)
+    right = fx.subs(Symbol('x'), down_boundary)
     return str(left) + " - " + str(right)
 
 
