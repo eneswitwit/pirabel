@@ -3,6 +3,7 @@ import string
 import json
 import subprocess
 
+# math libs
 from scipy.integrate import quad
 from sympy import integrate as indefinite
 from sympy import diff
@@ -11,6 +12,7 @@ from sympy import latex
 from sympy.solvers import solve
 from sympy import sympify
 from sympy import exp
+from mpmath import *
 
 from fractions import Fraction
 from decimal import Decimal
