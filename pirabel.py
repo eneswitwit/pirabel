@@ -51,7 +51,7 @@ def integrate_route(fx, down_boundary, upper_boundary):
 @app.route("/integrate/indefinite/<fx>")
 def indefinite_route(fx):
     fx = convert_latex(fx)
-    indefinite_result = latex(simplify(str(indefinite(fx, Symbol('x')))))
+    indefinite_result = latex(sympify(str(indefinite(fx, Symbol('x')))))
     json_result = [
         {'indefinite': indefinite_result}
     ]
