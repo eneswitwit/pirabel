@@ -45,7 +45,7 @@ def integrate_route(fx, down_boundary, upper_boundary):
     json_result = [
         {'indefinite': latex(sympify(str(indefinite_result)))},
         {'calculation': calculation(indefinite_result, down_boundary, upper_boundary)},
-        {'result': float(integration_result,6)}
+        {'result': round(integration_result,6)}
     ]
     return json.dumps(json_result)
 
