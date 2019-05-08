@@ -35,7 +35,21 @@ if __name__ == "__main__":
 def home():
     return json.dumps("Pirabel API 1.0")
 
+# -------------------------- RICHIE RICH APP --------------------------- # 
+@app.route("/richie-rich/yield-rent/<investment>/<living_space>/<rent>")
+def yield_rent_route(investment, living_space, rent):
+    yield_on_investment = round(float(rent)*12*100/float(investment),2)
+    investment_per_meter = round(float(investment)/float(living_space),2)
+    rent_per_meter = round(float(living_space)/float(rent),2)
 
+    json_result = [
+        {'yield_on_investment': yield_on_investment},
+        {'investment_per_meter': investment_per_meter},
+        {'rent_per_meter': rent_per_meter}
+    ]
+    return json.dumps(json_result)
+
+# -------------------------- PIRABEL APP --------------------------- # 
 # integration routes
 @app.route("/integrate/<fx>/<down_boundary>/<upper_boundary>")
 def integrate_route(fx, down_boundary, upper_boundary):
