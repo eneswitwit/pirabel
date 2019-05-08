@@ -43,9 +43,9 @@ def yield_rent_route(investment, living_space, rent):
     rent_per_meter = round(float(rent)/float(living_space),2)
 
     json_result = [
-        {'yield_on_investment': yield_on_investment},
-        {'investment_per_meter': investment_per_meter},
-        {'rent_per_meter': rent_per_meter}
+        {'yield_on_investment': yield_on_investment,
+        'investment_per_meter': investment_per_meter,
+        'rent_per_meter': rent_per_meter}
     ]
     return json.dumps(json_result)
 
