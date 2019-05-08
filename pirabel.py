@@ -40,7 +40,7 @@ def home():
 def yield_rent_route(investment, living_space, rent):
     yield_on_investment = round(float(rent)*12*100/float(investment),2)
     investment_per_meter = round(float(investment)/float(living_space),2)
-    rent_per_meter = round(float(living_space)/float(rent),2)
+    rent_per_meter = round(float(rent)/float(living_space),2)
 
     json_result = [
         {'yield_on_investment': yield_on_investment},
